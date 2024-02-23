@@ -15,7 +15,7 @@ jobs:
           stack: ipv6
 
       - name: ipconfig
-        run: curl -m 9 -6 https://ifconfig.co
+        run: curl -m 9 -6 --verbose https://ifconfig.co
 
       - name: slido
-        run: curl -m 9 -6 https://api.slido-staging.com/api/latest/ping
+        run: curl -m 9 -6 --verbose https://api.slido-staging.com/api/latest/ping
