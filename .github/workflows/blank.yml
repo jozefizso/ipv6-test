@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: setup warp
-        uses: fscarmen/warp-on-actions@v2
+        uses: fscarmen/warp-on-actions@v1.1
         with:
           stack: ipv6
 
