@@ -1,0 +1,21 @@
+name: ipv6-test
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: setup warp
+        uses: fscarmen/warp-on-actions@v2
+        with:
+          stack: ipv6
+
+      - name: ipconfig
+        run: curl -m 9 -6 https://ifconfig.co
+
+      - name: slido
+        run: curl -m 9 -6 https://api.slido-staging.com/api/latest/ping
