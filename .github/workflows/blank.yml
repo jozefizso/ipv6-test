@@ -8,19 +8,19 @@ jobs:
   test:
     strategy:
       matrix:
-          os: [ubuntu-latest, windows-2022]
+          os: [windows-2022]
 
     runs-on: ${{ matrix.os }}
 
     steps:
-      - name: setup warp
-        if: runner.os == 'Linux'
-        uses: fscarmen/warp-on-actions@v1.1
-        with:
-          stack: ipv6
+      - name: setup dig
+        run: choco upgrade -y bind-toolsonly
 
-      - name: ipconfig
-        run: curl -m 9 -6 --verbose https://ifconfig.co
+      - name: dig A
+        run: dig api.slido-staging.com A
+
+      - name: dig AAAA
+        run: dig api.slido-staging.com AAAA
 
       - name: slido
-        run: curl -m 9 -6 --verbose https://api.slido-staging.com/api/latest/ping
+        run: curl -m 3 -6 --verbose https://api.slido-staging.com/api/latest/ping
