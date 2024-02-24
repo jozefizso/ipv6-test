@@ -22,5 +22,8 @@ jobs:
       - name: dig AAAA
         run: dig api.slido-staging.com AAAA
 
-      - name: slido
+      - name: ipv4
+        run: curl -m 3 -4 --verbose https://api.slido-staging.com/api/latest/ping
+
+      - name: ipv6
         run: curl -m 3 -6 --verbose https://api.slido-staging.com/api/latest/ping
