@@ -6,10 +6,15 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+          os: [ubuntu-latest, windows-2022]
+
+    runs-on: ${{ matrix.os }}
 
     steps:
       - name: setup warp
+        if: runner.os == 'Linux'
         uses: fscarmen/warp-on-actions@v1.1
         with:
           stack: ipv6
